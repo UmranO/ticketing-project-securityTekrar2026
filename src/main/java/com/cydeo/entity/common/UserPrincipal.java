@@ -12,7 +12,7 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {  //Implemented so that we can implement the methods inside it
                                                      //gets the Authorities, username & password and answers 4 boolean ()-It has 7 abstract ()
 
-    private User user;
+    private User user;                                                 //This is the Entity User which is in our DB
 
     public UserPrincipal(User user) {
         this.user = user;
@@ -28,7 +28,7 @@ public class UserPrincipal implements UserDetails {  //Implemented so that we ca
 
     @Override
     public String getPassword() {
-        return this.user.getPassWord();   //how iIcan acccess to password field of the user object
+        return this.user.getPassWord();   //how I can acccess to password field of the user object
     }
 
     @Override
