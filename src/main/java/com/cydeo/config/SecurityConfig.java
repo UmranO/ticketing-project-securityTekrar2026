@@ -62,6 +62,7 @@ public class SecurityConfig {
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and().build();
+
     }
 
 
