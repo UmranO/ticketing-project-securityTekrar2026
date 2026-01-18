@@ -97,8 +97,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectDTO> listAllProjectDetails() {
-     //UserDTO currentUserDTO = userService.findByUserName("harold@manager.com"); Bunu gecici olarak koyduk
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+     //UserDTO currentUserDTO = userService.findByUserName("harold@manager.com");                Bunu gecici olarak koymustuk
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();     //LogedIn User'a ait tum bilgiyi veren bir syntax
 
         UserDTO currentUserDTO = userService.findByUserName(username);
         User user = userMapper.convertToEntity(currentUserDTO);
