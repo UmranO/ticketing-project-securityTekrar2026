@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
         //Set the new password
         //Then save
 
+        user.setEnabled(true);
         User obj = userMapper.convertToEntity(user);
         obj.setPassWord(passwordEncoder.encode(obj.getPassWord()));
 
