@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class BaseEntityListener extends AuditingEntityListener {
 
     @PrePersist
-    private void onPrePersist(BaseEntity baseEntity){
+    private void onPrePersist(BaseEntity baseEntity){                                           //Ayni paketteler onun icic importa gerek yok
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //First we need to get our Authentication
 
@@ -26,7 +26,16 @@ public class BaseEntityListener extends AuditingEntityListener {
         }
     }
 
+    @PreUpdate
+    private void onPreUpdate(BaseEntity baseEntity){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        baseEntity.setLastUpdateDateTime(LocalDateTime.now());
 
+        if(authentication != null && !authentication.getName().equals("anonymousUser")){
+            Object principal = authentication.getPrincipal();
+            baseEntity.setLastUpdateUserId( ((UserPrincipal) principal).getId());
+        }
+    }
 
 }
